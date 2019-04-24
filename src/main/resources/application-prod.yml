@@ -1,0 +1,73 @@
+#\u670D\u52A1\u7AEF\u53E3\u53F7
+server:
+  port: 8082
+
+  # \u6570\u636E\u6E90\u914D\u7F6E
+spring:
+  application:
+    name: demo-quartz
+  thymeleaf:
+    cache: false # \u5F00\u53D1\u65F6\u5173\u95ED\u7F13\u5B58,\u4E0D\u7136\u6CA1\u6CD5\u770B\u5230\u5B9E\u65F6\u9875\u9762
+    mode: HTML # \u7528\u975E\u4E25\u683C\u7684 HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    suffix: .html  #\u8BBE\u7F6E\u5728\u4F7F\u7528Thymeleaf\u505A\u9875\u9762\u6A21\u677F\u65F6\u7684\u540E\u7F00\uFF0C\u5176\u5B9E\u9ED8\u8BA4\u5C31\u662Fhtml
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myquartz?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    #\u8FDE\u63A5\u6C60\u914D\u7F6E
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: fasle
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    connectionProperties: characterEncoding=utf8;druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      #   \u914D\u7F6E\u76D1\u63A7\u7EDF\u8BA1\u62E6\u622A\u7684filters\uFF0C\u53BB\u6389\u540E\u76D1\u63A7\u754C\u9762sql\u65E0\u6CD5\u7EDF\u8BA1\uFF0C'wall'\u7528\u4E8E\u9632\u706B\u5899
+    filters: stat,wall,log4j
+    useGlobalDataSourceStat: true
+  jmx:
+    enabled: false
+
+
+  # \u5408\u5E76\u591A\u4E2ADruidDataSource\u7684\u76D1\u63A7\u6570\u636E
+  #spring.datasource.useGlobalDataSourceStat=true
+  #spring.datasource.filters=stat,wall,log4j
+  #mybaits mapper\u4F4D\u7F6E\u8BBE\u7F6E
+mybatis:
+  # \u641C\u7D22\u6307\u5B9A\u5305\u522B\u540D
+  typeAliasesPackage: com.quartz.demo
+  # \u914D\u7F6Emapper\u7684\u626B\u63CF\uFF0C\u627E\u5230\u6240\u6709\u7684mapper.xml\u6620\u5C04\u6587\u4EF6
+  mapperLocations: classpath:mybatis/**/*Mapper.xml
+  # \u52A0\u8F7D\u5168\u5C40\u7684\u914D\u7F6E\u6587\u4EF6
+ # configLocation: classpath:mybatis/mybatis-config.xml
+
+
+
+  #\u8BBF\u95EE\u65E5\u5FD7\u8DEF\u5F84
+  #server.tomcat.accesslog.directory=
+  #\u51FA\u73B0\u9519\u8BEF\u65F6, \u76F4\u63A5\u629B\u51FA\u5F02\u5E38,\u81EA\u5B9A\u4E49\u5F02\u5E38\u9875\u9762\u4F7F\u7528
+#spring.mvc.throw-exception-if-no-handler-found=true
+  #\u4E0D\u8981\u4E3A\u6211\u4EEC\u5DE5\u7A0B\u4E2D\u7684\u8D44\u6E90\u6587\u4EF6\u5EFA\u7ACB\u6620\u5C04,\u81EA\u5B9A\u4E49\u5F02\u5E38\u9875\u9762\u4F7F\u7528
+#spring.resources.add-mappings=false
+
+
+
+
+  #\u8BBE\u7F6E\u9759\u6001\u8D44\u6E90\u7684\u8BF7\u6C42\u8DEF\u5F84
+  #spring.mvc.static-path-pattern=/**
+  #\u6307\u5B9A\u9759\u6001\u8D44\u6E90\u7684\u8DEF\u5F84
+  #spring.resources.static-locations=classpath:/static/,classpath:/public/
+  #\u7981\u6B62\u5BF9\u5916\u63D0\u4F9BSpring MBeans
+#spring.jmx.enabled=false
+

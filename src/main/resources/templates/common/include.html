@@ -1,0 +1,17 @@
+<head th:fragment="head">
+    <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.css" rel="stylesheet">
+    <link href="http://www.bootcss.com/p/bootstrap-switch/static/stylesheets/bootstrapSwitch.css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/plugins/font-awesome/css/font-awesome.min.css}">
+
+</head>
+<footer th:fragment="foot">
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+    <script th:src="@{/bootstrap/plugins/bootstrap-table/bootstrap-table.js}"></script>
+    <!--
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.js"></script>
+    -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.8.1/locale/bootstrap-table-zh-CN.js"></script>
+    <script th:src="@{/app.js}"></script>
+</footer>
